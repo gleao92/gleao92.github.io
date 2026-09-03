@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guilherme Leão — Desenvolvedor Full Stack</title>
+  
+  <meta name="description" content="Portfólio de Guilherme Leão. Desenvolvedor Full Stack especializado em Python, React, TypeScript, GovTech e LegalTech.">
+  <meta name="theme-color" content="#09090b">
+  
+  <!-- Fontes Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- CSS Limpo & Editorial -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Linha de Progresso Sutil -->
+  <div id="scroll-progress"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar-clean">
+    <div class="max-w-4xl mx-auto px-5 h-16 flex items-center justify-between">
+      
+      <!-- Marca / Nome -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <span class="font-bold text-sm tracking-tight text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+          Guilherme Leão
+        </span>
+        <span class="text-zinc-400 dark:text-zinc-600 text-xs hidden sm:inline">/</span>
+        <span class="text-xs text-zinc-600 dark:text-zinc-400 font-mono hidden sm:inline">Goiás, BR</span>
+      </a>
+
+      <!-- Navegação -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+        <a href="#about" class="hover:text-zinc-900 dark:hover:text-white transition-colors">Sobre</a>
+        <a href="#terminal" class="hover:text-zinc-900 dark:hover:text-white transition-colors">Terminal</a>
+        <a href="#projects" class="hover:text-zinc-900 dark:hover:text-white transition-colors">Projetos</a>
+        <a href="#stack" class="hover:text-zinc-900 dark:hover:text-white transition-colors">Stack</a>
+        <a href="#contact" class="hover:text-zinc-900 dark:hover:text-white transition-colors">Contato</a>
+      </nav>
+
+      <!-- Ações -->
+      <div class="flex items-center gap-2.5">
+        <!-- Alternador de Tema -->
+        <button id="theme-toggle" class="p-2 rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors" aria-label="Alternar tema">
+          <i data-lucide="sun" id="theme-icon-light" class="w-4 h-4 hidden text-amber-500"></i>
+          <i data-lucide="moon" id="theme-icon-dark" class="w-4 h-4"></i>
+        </button>
+
+        <!-- GitHub -->
+        <a id="nav-github-btn" href="https://github.com/gleao92" target="_blank" rel="noopener noreferrer" 
+           class="p-2 rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors" title="GitHub">
+          <i data-lucide="github" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section id="about" class="pt-16 pb-14 px-5 max-w-4xl mx-auto">
+    <div class="flex flex-col-reverse md:flex-row md:items-center justify-between gap-8">
+      
+      <!-- Texto Principal -->
+      <div class="max-w-2xl">
+        <!-- Status de Disponibilidade Sóbrio -->
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          <span>Disponível para novos projetos</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-2">
+          Guilherme Leão
+        </h1>
+
+        <p class="text-base sm:text-lg font-medium text-indigo-600 dark:text-indigo-400 mb-5">
+          Desenvolvedor Full Stack
+        </p>
+
+        <p class="text-zinc-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+          Desenvolvedor focado em construir softwares funcionais, seguros e bem modelados. Experiência na criação de plataformas municipais offline-first (<span class="text-zinc-900 dark:text-zinc-100 font-medium">GovTech</span>), controladores de cálculo crítico de prazos processuais (<span class="text-zinc-900 dark:text-zinc-100 font-medium">LegalTech</span>) e sistemas web com Python, React, TypeScript e PostgreSQL.
+        </p>
+
+        <!-- Ações Diretas -->
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="#projects" class="px-4 py-2 text-xs font-semibold btn-dark inline-flex items-center gap-1.5">
+            Ver Projetos
+            <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
+          </a>
+
+          <a href="https://github.com/gleao92" target="_blank" rel="noopener noreferrer" 
+             class="px-3.5 py-2 text-xs font-medium btn-outline inline-flex items-center gap-1.5">
+            <i data-lucide="github" class="w-3.5 h-3.5"></i>
+            GitHub (@gleao92)
+          </a>
+
+          <button id="copy-email-btn" class="px-3.5 py-2 text-xs font-medium btn-outline inline-flex items-center gap-1.5">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span>Copiar E-mail</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Avatar Limpo com Borda Fina -->
+      <div class="flex-shrink-0">
+        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full border border-zinc-200 dark:border-zinc-700 overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-sm">
+          <img id="user-avatar" 
+               src="https://avatars.githubusercontent.com/u/122608387?v=4" 
+               alt="Guilherme Leão" 
+               class="w-full h-full object-cover">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TERMINAL INTERATIVO (CONSOLE DO DESENVOLVEDOR) ================= -->
+  <section id="terminal" class="py-8 px-5 max-w-4xl mx-auto border-t border-zinc-200 dark:border-zinc-800">
+    <div class="terminal-window">
+      <!-- Header do Terminal -->
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <div class="terminal-dot dot-red"></div>
+          <div class="terminal-dot dot-yellow"></div>
+          <div class="terminal-dot dot-green"></div>
+        </div>
+        <div class="text-xs text-zinc-300 font-mono flex items-center gap-1.5">
+          <i data-lucide="terminal" class="w-3.5 h-3.5 text-indigo-400"></i>
+          gleao92@dev: ~ (zsh)
+        </div>
+        <div class="text-[10px] text-zinc-400 font-mono hidden sm:block">Console Interativo</div>
+      </div>
+
+      <!-- Corpo do Terminal -->
+      <div class="p-5 font-mono text-xs sm:text-sm text-zinc-200 space-y-3 leading-relaxed">
+        <div class="text-zinc-300">
+          <span class="text-emerald-400">➜</span> <span class="text-cyan-400">~</span> Clique nos botões ou digite comandos rápidos:
+        </div>
+
+        <!-- Atalhos rápidos clicáveis com botão Limpar destacado -->
+        <div class="flex flex-wrap gap-2 pt-1 pb-2" id="terminal-pills">
+          <button class="px-2.5 py-1 rounded bg-zinc-800 text-indigo-300 border border-zinc-700 hover:bg-indigo-600 hover:text-white transition-all text-xs font-semibold" data-cmd="sobre">
+            $ sobre
+          </button>
+          <button class="px-2.5 py-1 rounded bg-zinc-800 text-emerald-300 border border-zinc-700 hover:bg-emerald-600 hover:text-white transition-all text-xs font-semibold" data-cmd="projetos">
+            $ projetos
+          </button>
+          <button class="px-2.5 py-1 rounded bg-zinc-800 text-amber-300 border border-zinc-700 hover:bg-amber-600 hover:text-white transition-all text-xs font-semibold" data-cmd="skills">
+            $ skills
+          </button>
+          <button class="px-2.5 py-1 rounded bg-zinc-800 text-purple-300 border border-zinc-700 hover:bg-purple-600 hover:text-white transition-all text-xs font-semibold" data-cmd="contato">
+            $ contato
+          </button>
+          <button class="px-2.5 py-1 rounded bg-zinc-800 text-zinc-300 border border-zinc-700 hover:bg-zinc-700 hover:text-white transition-all text-xs font-semibold" data-cmd="clear">
+            $ limpar
+          </button>
+        </div>
+
+        <!-- Output dinâmico do Terminal -->
+        <div id="terminal-output" class="space-y-2 border-t border-zinc-800/80 pt-3">
+          <div class="text-zinc-400">
+            <span class="text-indigo-400 font-semibold">guilherme@dev:~$</span> cat info.txt
+          </div>
+          <div class="text-zinc-200 pl-4 border-l-2 border-indigo-500">
+            "Desenvolvedor Full Stack — Especializado em GovTech, LegalTech e sistemas web com Python, React, TypeScript e PostgreSQL."
+          </div>
+        </div>
+
+        <!-- Linha de Entrada do Terminal -->
+        <form id="terminal-form" class="flex items-center gap-2 pt-2">
+          <span class="text-indigo-400 font-semibold flex-shrink-0">guilherme@dev:~$</span>
+          <input type="text" id="terminal-input" placeholder="Digite um comando (ex: projetos, skills, limpar)..." 
+                 class="bg-transparent border-none outline-none text-white w-full placeholder-zinc-500 font-mono text-xs sm:text-sm">
+          <span class="cursor-blink flex-shrink-0"></span>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJETOS SELECIONADOS ================= -->
+  <section id="projects" class="py-12 px-5 max-w-4xl mx-auto border-t border-zinc-200 dark:border-zinc-800">
+    <div class="mb-8">
+      <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Projetos Selecionados</h2>
+      <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Plataformas em operação e soluções desenvolvidas de ponta a ponta.</p>
+    </div>
+
+    <!-- Lista Editorial de Projetos -->
+    <div id="projects-list" class="space-y-5">
+      <!-- Injetado via app.js -->
+    </div>
+  </section>
+
+  <!-- ================= STACK TECNOLÓGICA ================= -->
+  <section id="stack" class="py-12 px-5 max-w-4xl mx-auto border-t border-zinc-200 dark:border-zinc-800">
+    <div class="mb-8">
+      <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Stack Tecnológica</h2>
+      <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Tecnologias e ferramentas utilizadas com domínio prático no dia a dia.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Backend & Bancos -->
+      <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40">
+        <div class="flex items-center gap-2 mb-3">
+          <i data-lucide="server" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">Backend & Dados</h3>
+        </div>
+        <ul class="space-y-1.5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
+          <li>• Python & Django REST</li>
+          <li>• Node.js & Express</li>
+          <li>• PostgreSQL & PostGIS</li>
+          <li>• Supabase & Edge Functions</li>
+          <li>• SQLite & Modelagem Relacional</li>
+          <li>• APIs RESTful & Webhooks</li>
+        </ul>
+      </div>
+
+      <!-- Frontend -->
+      <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40">
+        <div class="flex items-center gap-2 mb-3">
+          <i data-lucide="layout" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">Frontend</h3>
+        </div>
+        <ul class="space-y-1.5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
+          <li>• React & TypeScript</li>
+          <li>• JavaScript Moderno (ES6+)</li>
+          <li>• Tailwind CSS & shadcn/ui</li>
+          <li>• PWA Offline-First (IndexedDB)</li>
+          <li>• HTML5 Semântico & Acessibilidade</li>
+        </ul>
+      </div>
+
+      <!-- Infra & Ferramentas -->
+      <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40">
+        <div class="flex items-center gap-2 mb-3">
+          <i data-lucide="box" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">DevOps & Boas Práticas</h3>
+        </div>
+        <ul class="space-y-1.5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
+          <li>• Docker & Docker Compose</li>
+          <li>• Git & GitHub Workflow</li>
+          <li>• Linux / Terminal</li>
+          <li>• PostgreSQL RLS & Segurança LGPD</li>
+          <li>• Testes Automatizados (PyTest)</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CONTATO ================= -->
+  <section id="contact" class="py-14 px-5 max-w-4xl mx-auto border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-2">Contato</h2>
+      <p class="text-zinc-600 dark:text-zinc-400 text-sm mb-6 font-normal">
+        Seja para consultoria, desenvolvimento de um novo projeto ou oportunidades profissionais, sinta-se à vontade para entrar em contato diretamente.
+      </p>
+
+      <!-- Botão Direto WhatsApp em Destaque -->
+      <div class="mb-6">
+        <a href="https://wa.me/5562982488018" target="_blank" rel="noopener noreferrer" 
+           class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white inline-flex items-center gap-2 shadow-sm transition-all hover:-translate-y-0.5">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>Conversar no WhatsApp</span>
+          <span class="font-mono opacity-90 text-[11px] font-normal">(62) 98248-8018</span>
+        </a>
+      </div>
+
+      <div class="space-y-3 font-mono text-xs">
+        <div class="flex items-center gap-3 text-zinc-700 dark:text-zinc-300">
+          <span class="text-zinc-600 dark:text-zinc-400 w-20">WhatsApp:</span>
+          <a href="https://wa.me/5562982488018" target="_blank" rel="noopener noreferrer" class="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline inline-flex items-center gap-1.5">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+            (62) 98248-8018
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3 text-zinc-700 dark:text-zinc-300">
+          <span class="text-zinc-600 dark:text-zinc-400 w-20">E-mail:</span>
+          <a href="mailto:guilhermeleao92@hotmail.com" class="font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 underline">
+            guilhermeleao92@hotmail.com
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3 text-zinc-700 dark:text-zinc-300">
+          <span class="text-zinc-600 dark:text-zinc-400 w-20">GitHub:</span>
+          <a href="https://github.com/gleao92" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 dark:hover:text-indigo-400 underline">
+            github.com/gleao92
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3 text-zinc-700 dark:text-zinc-300">
+          <span class="text-zinc-600 dark:text-zinc-400 w-20">LinkedIn:</span>
+          <a href="https://www.linkedin.com/in/guilherme-leao" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 dark:hover:text-indigo-400 underline">
+            linkedin.com/in/guilherme-leao
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-8 px-5 border-t border-zinc-200 dark:border-zinc-800 text-xs text-zinc-600 dark:text-zinc-400">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© <span id="current-year">2026</span> Guilherme Leão. Código limpo e desenvolvimento pragmático.</p>
+      <div class="flex items-center gap-5">
+        <a href="#about" class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">Início</a>
+        <a href="#projects" class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">Projetos</a>
+        <a href="https://wa.me/5562982488018" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline transition-colors inline-flex items-center gap-1">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
+        </a>
+        <a href="https://github.com/gleao92" target="_blank" class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL DE DETALHES TÉCNICOS ================= -->
+  <div id="project-modal" class="modal-backdrop">
+    <div class="modal-content p-6 sm:p-8 relative">
+      <button id="modal-close-btn" class="absolute top-5 right-5 p-1.5 rounded-lg text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors" aria-label="Fechar">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Botão Voltar ao Topo -->
+  <button id="back-to-top" aria-label="Voltar ao topo">
+    <i data-lucide="arrow-up" class="w-4 h-4"></i>
+  </button>
+
+  <!-- Toast -->
+  <div id="toast">
+    <i data-lucide="check" class="w-4 h-4 text-emerald-500"></i>
+    <span id="toast-message">E-mail copiado</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
