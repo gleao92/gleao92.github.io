@@ -2,6 +2,26 @@
 <html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="UTF-8">
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-95WVC1EJJ7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-95WVC1EJJ7');
+
+    // Cliques de contato (WhatsApp, e-mail, GitHub, LinkedIn)
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href]');
+      if (!a) return;
+      var href = a.getAttribute('href');
+      var canal = href.indexOf('wa.me') > -1 ? 'whatsapp'
+        : href.indexOf('mailto:') === 0 ? 'email'
+        : href.indexOf('linkedin.com') > -1 ? 'linkedin'
+        : href.indexOf('github.com') > -1 ? 'github' : null;
+      if (canal) gtag('event', 'contato_click', { canal: canal, link_url: href });
+    });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guilherme Leão — Desenvolvedor Full Stack</title>
   
