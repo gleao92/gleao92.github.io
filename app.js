@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const elements = {
     userAvatar: document.getElementById('user-avatar'),
     projectsList: document.getElementById('projects-list'),
+    projectsCount: document.getElementById('projects-count'),
+    heroLive: document.getElementById('hero-live'),
     projectModal: document.getElementById('project-modal'),
     modalBody: document.getElementById('modal-body'),
     modalCloseBtn: document.getElementById('modal-close-btn'),
@@ -48,14 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. GERENCIAMENTO DE TEMA (DARK / LIGHT)
   // ==========================================
   function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 
-      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    setTheme(savedTheme);
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem('theme'); } catch (e) {}
+    setTheme(savedTheme ||
+      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
   }
 
   function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    try { localStorage.setItem('theme', theme); } catch (e) {}
 
     if (theme === 'light') {
       elements.themeIconLight?.classList.remove('hidden');
@@ -99,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="text-zinc-200 font-semibold mb-1">Projetos Desenvolvidos:</div>
         <div class="space-y-1 text-xs">
           ${(config.projects || []).map(p => `
-            <div><span class="text-emerald-400 font-bold">${p.title}</span> <span class="text-zinc-500 font-mono">[${p.category}]</span></div>
+            <div><span class="text-emerald-400 font-bold">${p.title}</span> <span class="text-zinc-500 font-mono">[${p.category}]</span>${p.demoUrl ? ` <a href="${p.demoUrl}" target="_blank" rel="noopener noreferrer" data-produto="${p.id}" class="text-indigo-400 underline">abrir ↗</a>` : ''}</div>
           `).join('')}
         </div>
         <div class="text-zinc-400 text-[11px] mt-2">Dica: Role a página para a seção de Projetos ou clique em "Detalhes" para ver a arquitetura completa.</div>
@@ -183,57 +186,78 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderProjects() {
     if (!elements.projectsList || !config.projects?.length) return;
 
+    const liveProjects = config.projects.filter(p => p.demoUrl);
+    if (elements.projectsCount) {
+      elements.projectsCount.textContent = `${config.projects.length} projetos · ${liveProjects.length} em produção`;
+    }
+
+    if (elements.heroLive && liveProjects.length) {
+      elements.heroLive.innerHTML = `
+        <span class="live-badge"><span class="live-dot"></span>Em produção</span>
+        ${liveProjects.map(p => `
+          <a href="${p.demoUrl}" target="_blank" rel="noopener noreferrer" data-produto="${p.id}" class="hero-live-link">
+            ${escapeHtml(p.title.split(' — ')[0])}
+            <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+          </a>
+        `).join('')}
+      `;
+      elements.heroLive.classList.remove('hidden');
+      elements.heroLive.classList.add('flex');
+    }
+
     elements.projectsList.innerHTML = config.projects.map(project => `
-      <article class="project-card p-5 sm:p-6 flex flex-col justify-between">
-        <div>
-          <!-- Header do Card: Categoria & Ano -->
-          <div class="flex items-center justify-between text-xs mb-2">
-            <span class="font-mono font-medium text-indigo-600 dark:text-indigo-400">
-              ${escapeHtml(project.category)}
+      <article class="project-card reveal p-5 sm:p-6 flex flex-col">
+        <!-- Header do Card: Categoria, Ano & Status -->
+        <div class="flex items-center justify-between gap-2 text-xs mb-3">
+          <span class="font-mono font-medium text-indigo-600 dark:text-indigo-400">
+            ${escapeHtml(project.category)} <span class="text-zinc-400 dark:text-zinc-600">·</span> <span class="text-zinc-600 dark:text-zinc-400">${escapeHtml(project.year || '2026')}</span>
+          </span>
+          ${project.demoUrl ? `
+            <span class="live-badge" title="Produto em produção">
+              <span class="live-dot"></span>
+              Ao vivo
             </span>
-            <span class="font-mono text-zinc-600 dark:text-zinc-400">
-              ${escapeHtml(project.year || '2026')}
-            </span>
-          </div>
-
-          <!-- Título -->
-          <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2">
-            ${escapeHtml(project.title)}
-          </h3>
-
-          <!-- Resumo -->
-          <p class="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed mb-4 font-normal">
-            ${escapeHtml(project.summary)}
-          </p>
+          ` : ''}
         </div>
 
-        <!-- Footer do Card: Tags & Ações -->
-        <div class="pt-4 border-t border-zinc-200 dark:border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div class="flex flex-wrap gap-1.5">
-            ${(project.stack || []).map(tech => `
-              <span class="tech-tag">${escapeHtml(tech)}</span>
-            `).join('')}
-          </div>
+        <!-- Título -->
+        <h3 class="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-2 leading-snug">
+          ${escapeHtml(project.title)}
+        </h3>
 
-          <div class="flex items-center gap-2 flex-shrink-0">
-            <button class="open-modal-btn px-3 py-1.5 rounded-lg text-xs font-semibold btn-outline inline-flex items-center gap-1.5" data-project-id="${project.id}">
-              <span>Detalhes</span>
-              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-zinc-600 dark:text-zinc-400"></i>
-            </button>
+        <!-- Resumo -->
+        <p class="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed mb-4 font-normal">
+          ${escapeHtml(project.summary)}
+        </p>
 
-            ${!project.isPrivate ? `
-              <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" 
-                 class="px-3 py-1.5 rounded-lg text-xs font-semibold btn-outline inline-flex items-center gap-1.5" title="Ver código no GitHub">
-                <i data-lucide="github" class="w-3.5 h-3.5"></i>
-                <span>Código</span>
-              </a>
-            ` : `
-              <span class="px-2.5 py-1.5 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-zinc-400 inline-flex items-center gap-1" title="Código proprietário">
-                <i data-lucide="lock" class="w-3 h-3"></i>
-                Privado
-              </span>
-            `}
-          </div>
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-1.5 mb-5">
+          ${(project.stack || []).map(tech => `
+            <span class="tech-tag">${escapeHtml(tech)}</span>
+          `).join('')}
+        </div>
+
+        <!-- Ações -->
+        <div class="mt-auto pt-4 border-t border-zinc-200 dark:border-zinc-800/80 flex flex-wrap items-center gap-2">
+          ${productLink(project, 'px-3 py-1.5 text-xs')}
+
+          <button class="open-modal-btn px-3 py-1.5 rounded-lg text-xs font-semibold btn-outline inline-flex items-center gap-1.5" data-project-id="${project.id}">
+            <span>Detalhes</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-zinc-600 dark:text-zinc-400"></i>
+          </button>
+
+          ${!project.isPrivate ? `
+            <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer"
+               class="px-3 py-1.5 rounded-lg text-xs font-semibold btn-outline inline-flex items-center gap-1.5" title="Ver código no GitHub">
+              <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              <span>Código</span>
+            </a>
+          ` : `
+            <span class="ml-auto px-1.5 py-1.5 text-[11px] font-mono text-zinc-600 dark:text-zinc-400 inline-flex items-center gap-1" title="Código proprietário">
+              <i data-lucide="lock" class="w-3 h-3"></i>
+              Código privado
+            </span>
+          `}
         </div>
       </article>
     `).join('');
@@ -249,6 +273,49 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) {
       window.lucide.createIcons();
     }
+
+    setupReveal();
+  }
+
+  // Botão principal do projeto: site do produto ou pedido de demonstração
+  function productLink(project, sizeClasses) {
+    if (project.demoUrl) {
+      return `
+        <a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" data-produto="${project.id}"
+           class="${sizeClasses} rounded-lg font-semibold btn-dark inline-flex items-center gap-1.5" title="Abrir ${escapeHtml(project.title)}">
+          <span>Acessar site</span>
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+      `;
+    }
+
+    const msg = encodeURIComponent(`Olá, Guilherme! Vi o projeto "${project.title}" no seu portfólio e gostaria de ver uma demonstração.`);
+    const whatsapp = config.socialLinks?.whatsapp || 'https://wa.me/5562982488018';
+    return `
+      <a href="${whatsapp}?text=${msg}" target="_blank" rel="noopener noreferrer"
+         class="${sizeClasses} rounded-lg font-semibold btn-outline inline-flex items-center gap-1.5" title="Solicitar demonstração pelo WhatsApp">
+        <i data-lucide="calendar-check" class="w-3.5 h-3.5"></i>
+        <span>Demo sob solicitação</span>
+      </a>
+    `;
+  }
+
+  // Entrada suave dos cards ao rolar a página
+  function setupReveal() {
+    const items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(el => el.classList.add('in'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(el => observer.observe(el));
   }
 
   // ==========================================
@@ -324,16 +391,18 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <!-- Ações do Modal -->
-        <div class="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-          <div>
+        <div class="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            ${productLink(project, 'px-3.5 py-1.5 text-xs')}
             ${!project.isPrivate ? `
-              <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" 
-                 class="px-3.5 py-1.5 rounded-lg text-xs font-semibold btn-dark inline-flex items-center gap-1.5">
+              <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer"
+                 class="px-3.5 py-1.5 rounded-lg text-xs font-semibold btn-outline inline-flex items-center gap-1.5">
                 <i data-lucide="github" class="w-3.5 h-3.5"></i>
                 <span>Ver no GitHub</span>
               </a>
             ` : `
-              <span class="text-xs text-zinc-600 dark:text-zinc-400 font-mono">
+              <span class="text-xs text-zinc-600 dark:text-zinc-400 font-mono inline-flex items-center gap-1">
+                <i data-lucide="lock" class="w-3 h-3"></i>
                 Repositório privado
               </span>
             `}

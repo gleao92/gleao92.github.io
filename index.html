@@ -20,6 +20,10 @@
         : href.indexOf('linkedin.com') > -1 ? 'linkedin'
         : href.indexOf('github.com') > -1 ? 'github' : null;
       if (canal) gtag('event', 'contato_click', { canal: canal, link_url: href });
+
+      // Cliques para abrir o site de um produto
+      var produto = a.getAttribute('data-produto');
+      if (produto) gtag('event', 'produto_click', { produto: produto, link_url: href });
     });
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +54,7 @@
   </script>
 
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 
   <!-- CSS Limpo & Editorial -->
   <link rel="stylesheet" href="style.css">
@@ -111,7 +115,7 @@
           <span>Disponível para novos projetos</span>
         </div>
 
-        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-2">
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-2">
           Guilherme Leão
         </h1>
 
@@ -120,7 +124,7 @@
         </p>
 
         <p class="text-zinc-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
-          Desenvolvedor focado em construir softwares funcionais, seguros e bem modelados. Experiência na criação de plataformas municipais offline-first (<span class="text-zinc-900 dark:text-zinc-100 font-medium">GovTech</span>), controladores de cálculo crítico de prazos processuais (<span class="text-zinc-900 dark:text-zinc-100 font-medium">LegalTech</span>) e sistemas web com Python, React, TypeScript e PostgreSQL.
+          Desenvolvedor focado em construir softwares funcionais, seguros e bem modelados. Experiência na criação de plataformas municipais offline-first (<span class="text-zinc-900 dark:text-zinc-100 font-medium">GovTech</span>), controladores de cálculo crítico de prazos processuais (<span class="text-zinc-900 dark:text-zinc-100 font-medium">LegalTech</span>), gestão de clínicas (<span class="text-zinc-900 dark:text-zinc-100 font-medium">HealthTech</span>) e sistemas web com Python, React, TypeScript e PostgreSQL.
         </p>
 
         <!-- Ações Diretas -->
@@ -141,6 +145,9 @@
             <span>Copiar E-mail</span>
           </button>
         </div>
+
+        <!-- Atalhos para os produtos em produção (injetado via app.js) -->
+        <div id="hero-live" class="hidden mt-6 flex-wrap items-center gap-x-3 gap-y-2 text-xs"></div>
       </div>
 
       <!-- Avatar Limpo com Borda Fina -->
@@ -221,13 +228,16 @@
 
   <!-- ================= PROJETOS SELECIONADOS ================= -->
   <section id="projects" class="py-12 px-5 max-w-4xl mx-auto border-t border-zinc-200 dark:border-zinc-800">
-    <div class="mb-8">
-      <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Projetos Selecionados</h2>
-      <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Plataformas em operação e soluções desenvolvidas de ponta a ponta.</p>
+    <div class="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+      <div>
+        <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Projetos Selecionados</h2>
+        <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Plataformas em operação e soluções desenvolvidas de ponta a ponta.</p>
+      </div>
+      <span id="projects-count" class="text-[11px] font-mono text-zinc-600 dark:text-zinc-400"></span>
     </div>
 
-    <!-- Lista Editorial de Projetos -->
-    <div id="projects-list" class="space-y-5">
+    <!-- Grade de Projetos -->
+    <div id="projects-list" class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <!-- Injetado via app.js -->
     </div>
   </section>

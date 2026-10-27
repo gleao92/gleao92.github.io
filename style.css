@@ -100,6 +100,86 @@ body {
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
+/* Selo "Ao vivo" para produtos em produção */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: 'JetBrains Mono', monospace;
+  color: #059669;
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .live-badge {
+  color: #34d399;
+}
+
+.live-dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.live-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: #10b981;
+  animation: pulse-live 1.8s ease-out infinite;
+}
+
+@keyframes pulse-live {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Atalhos de produto no herói */
+.hero-live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-hover);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-live-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Entrada suave dos cards */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal.in:hover {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .live-dot::after { animation: none; }
+  * { scroll-behavior: auto; }
+}
+
 /* Botões com Design Autêntico */
 .btn-dark {
   background-color: var(--text-primary);
