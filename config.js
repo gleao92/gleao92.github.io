@@ -56,20 +56,8 @@ const CONFIG = {
   },
 
   // Projetos Reais
+  // demoUrl: link público do produto (null = sem site no ar; o card mostra "Demo sob solicitação")
   projects: [
-    {
-      id: "jussara",
-      year: "2026",
-      title: "Aplicativo de Gestão Pública para Municípios",
-      category: "GovTech",
-      summary: "Ouvidoria digital municipal e plataforma de gestão de ordens de serviço (PWA + painel administrativo) em conformidade com a Lei Federal 13.460/2017.",
-      challenge: "Permitir que a população registre ocorrências urbanas mesmo sem sinal de internet, e que as secretarias municipais agrupem demandas vizinhas em rotas inteligentes para as equipes de manutenção.",
-      solution: "PWA 100% offline-first com fila no IndexedDB e sincronização automática. No backend, PostgreSQL com PostGIS no Supabase para geoprocessamento de duplicidades e Row Level Security (RLS) para isolamento estrito de dados conforme a LGPD.",
-      stack: ["JavaScript", "PWA / IndexedDB", "Supabase", "PostgreSQL", "PostGIS", "Deno", "Tailwind CSS"],
-      githubUrl: "https://github.com/gleao92/jussara",
-      demoUrl: null,
-      isPrivate: false
-    },
     {
       id: "tempestivo",
       year: "2026",
@@ -80,8 +68,21 @@ const CONFIG = {
       solution: "Motor algorítmico em Python com 31 testes unitários automatizados cobrindo feriados móveis e regras do TJGO. Fluxo de revisão humana obrigatória com auditoria imutável (Resolução CNJ 615/2025) e margem preventiva de 3 dias úteis.",
       stack: ["Python", "Streamlit", "SQLite / PostgreSQL", "DataJud API", "DJEN", "Docker"],
       githubUrl: "https://github.com/gleao92/jurimetria",
-      demoUrl: null,
-      isPrivate: false
+      demoUrl: "https://tempestivo.opusnoa.com.br",
+      isPrivate: true
+    },
+    {
+      id: "clinicflow",
+      year: "2026",
+      title: "ClinicFlow — Gestão de Clínicas",
+      category: "HealthTech",
+      summary: "Plataforma de gestão para clínicas: agenda, prontuário eletrônico com assinatura eletrônica, lembretes por WhatsApp e exportação no padrão FHIR.",
+      challenge: "Clínicas pequenas operam com agenda em papel ou planilha e prontuários dispersos, sem trilha de auditoria nem controle de acesso adequado a dados sensíveis de saúde.",
+      solution: "Aplicação multi-clínica em Python/Streamlit sobre Supabase (PostgreSQL) com Row Level Security por clínica e perfil, autenticação com MFA (TOTP), trilha de auditoria, numeração de prontuário com dígito verificador, validação do Cartão Nacional de Saúde e exportação FHIR para interoperabilidade.",
+      stack: ["Python", "Streamlit", "Supabase", "PostgreSQL / RLS", "MFA (TOTP)", "HL7 FHIR", "WhatsApp"],
+      githubUrl: "https://github.com/gleao92/app-gestao-clinica",
+      demoUrl: "https://clinicflow.opusnoa.com.br",
+      isPrivate: true
     },
     {
       id: "optic-flow",
@@ -93,6 +94,19 @@ const CONFIG = {
       solution: "Backend em Django REST Framework com PostgreSQL conteinerizado em Docker, e frontend responsivo em React + TypeScript com quadro Kanban em tempo real para as etapas de montagem e entrega.",
       stack: ["Python", "Django REST", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Docker"],
       githubUrl: "https://github.com/gleao92/optic-flow",
+      demoUrl: "https://opticflow-app.onrender.com",
+      isPrivate: true
+    },
+    {
+      id: "jussara",
+      year: "2026",
+      title: "Aplicativo de Gestão Pública para Municípios",
+      category: "GovTech",
+      summary: "Ouvidoria digital municipal e plataforma de gestão de ordens de serviço (PWA + painel administrativo) em conformidade com a Lei Federal 13.460/2017.",
+      challenge: "Permitir que a população registre ocorrências urbanas mesmo sem sinal de internet, e que as secretarias municipais agrupem demandas vizinhas em rotas inteligentes para as equipes de manutenção.",
+      solution: "PWA 100% offline-first com fila no IndexedDB e sincronização automática. No backend, PostgreSQL com PostGIS no Supabase para geoprocessamento de duplicidades e Row Level Security (RLS) para isolamento estrito de dados conforme a LGPD.",
+      stack: ["JavaScript", "PWA / IndexedDB", "Supabase", "PostgreSQL", "PostGIS", "Deno", "Tailwind CSS"],
+      githubUrl: "https://github.com/gleao92/jussara",
       demoUrl: null,
       isPrivate: true
     },
