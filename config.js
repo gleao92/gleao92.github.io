@@ -68,7 +68,7 @@ const CONFIG = {
       solution: "Motor algorítmico em Python com 31 testes unitários automatizados cobrindo feriados móveis e regras do TJGO. Fluxo de revisão humana obrigatória com auditoria imutável (Resolução CNJ 615/2025) e margem preventiva de 3 dias úteis.",
       stack: ["Python", "Streamlit", "SQLite / PostgreSQL", "DataJud API", "DJEN", "Docker"],
       githubUrl: "https://github.com/gleao92/jurimetria",
-      demoUrl: "https://tempestivo.opusnoa.com.br",
+      demoUrl: null,
       isPrivate: true
     },
     {
