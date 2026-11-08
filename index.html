@@ -10,7 +10,7 @@
     gtag('js', new Date());
     gtag('config', 'G-95WVC1EJJ7');
 
-    // Cliques de contato (WhatsApp, e-mail, GitHub, LinkedIn)
+    // Cliques de contato (WhatsApp, e-mail, GitHub, LinkedIn, ficha de orçamento)
     document.addEventListener('click', function (e) {
       var a = e.target.closest('a[href]');
       if (!a) return;
@@ -18,7 +18,8 @@
       var canal = href.indexOf('wa.me') > -1 ? 'whatsapp'
         : href.indexOf('mailto:') === 0 ? 'email'
         : href.indexOf('linkedin.com') > -1 ? 'linkedin'
-        : href.indexOf('github.com') > -1 ? 'github' : null;
+        : href.indexOf('github.com') > -1 ? 'github'
+        : href.indexOf('fichacliente.opusnoa.com.br') > -1 ? 'orcamento' : null;
       if (canal) gtag('event', 'contato_click', { canal: canal, link_url: href });
 
       // Cliques para abrir o site de um produto
@@ -132,6 +133,12 @@
           <a href="#projects" class="px-4 py-2 text-xs font-semibold btn-dark inline-flex items-center gap-1.5">
             Ver Projetos
             <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
+          </a>
+
+          <a href="https://fichacliente.opusnoa.com.br/" target="_blank" rel="noopener noreferrer"
+             class="px-3.5 py-2 text-xs font-medium btn-outline inline-flex items-center gap-1.5">
+            <i data-lucide="clipboard-list" class="w-3.5 h-3.5"></i>
+            Solicitar orçamento
           </a>
 
           <a href="https://github.com/gleao92" target="_blank" rel="noopener noreferrer" 
@@ -308,15 +315,23 @@
         Seja para consultoria, desenvolvimento de um novo projeto ou oportunidades profissionais, sinta-se à vontade para entrar em contato diretamente.
       </p>
 
-      <!-- Botão Direto WhatsApp em Destaque -->
-      <div class="mb-6">
+      <!-- Botão Direto WhatsApp em Destaque + ficha de orçamento -->
+      <div class="mb-6 flex flex-wrap items-center gap-3">
         <a href="https://wa.me/5562982488018" target="_blank" rel="noopener noreferrer" 
            class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white inline-flex items-center gap-2 shadow-sm transition-all hover:-translate-y-0.5">
           <i data-lucide="message-circle" class="w-4 h-4"></i>
           <span>Conversar no WhatsApp</span>
           <span class="font-mono opacity-90 text-[11px] font-normal">(62) 98248-8018</span>
         </a>
+        <a href="https://fichacliente.opusnoa.com.br/" target="_blank" rel="noopener noreferrer"
+           class="px-4 py-2.5 text-xs font-semibold btn-outline inline-flex items-center gap-2">
+          <i data-lucide="clipboard-list" class="w-4 h-4"></i>
+          <span>Preencher ficha de orçamento</span>
+        </a>
       </div>
+      <p class="text-zinc-600 dark:text-zinc-400 text-xs mb-6 -mt-3">
+        Tem um projeto em mente? A ficha leva poucos minutos e já me dá o que preciso para preparar o orçamento.
+      </p>
 
       <div class="space-y-3 font-mono text-xs">
         <div class="flex items-center gap-3 text-zinc-700 dark:text-zinc-300">
@@ -361,6 +376,7 @@
         <a href="https://wa.me/5562982488018" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline transition-colors inline-flex items-center gap-1">
           <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
         </a>
+        <a href="https://fichacliente.opusnoa.com.br/" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">Orçamento</a>
         <a href="https://github.com/gleao92" target="_blank" class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">GitHub</a>
       </div>
     </div>
@@ -388,7 +404,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="config.js?v=7b89abf-salus"></script>
-  <script src="app.js?v=7b89abf-salus"></script>
+  <script src="config.js?v=db42443-orc"></script>
+  <script src="app.js?v=db42443-orc"></script>
 </body>
 </html>

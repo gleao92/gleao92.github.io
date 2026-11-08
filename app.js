@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div>📧 E-mail: <a href="mailto:${config.email}" class="text-indigo-400 underline font-semibold">${config.email}</a></div>
           <div>🐙 GitHub: <a href="https://github.com/${config.githubUsername}" target="_blank" class="text-indigo-400 underline font-semibold">github.com/${config.githubUsername}</a></div>
           <div>💼 LinkedIn: <a href="${config.socialLinks?.linkedin || '#'}" target="_blank" class="text-indigo-400 underline font-semibold">Ver Perfil</a></div>
+          <div>📋 Orçamento: <a href="https://fichacliente.opusnoa.com.br/" target="_blank" rel="noopener noreferrer" class="text-indigo-400 underline font-semibold">preencher a ficha</a></div>
         </div>
       `,
       clear: () => {
