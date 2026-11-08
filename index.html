@@ -58,7 +58,7 @@
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 
   <!-- CSS Limpo & Editorial -->
-  <link rel="stylesheet" href="style.css?v=3d64c2f">
+  <link rel="stylesheet" href="style.css?v=0a73512-ns">
 </head>
 <body class="min-h-screen antialiased selection:bg-indigo-500 selection:text-white">
 
@@ -125,7 +125,7 @@
         </p>
 
         <p class="text-zinc-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
-          Desenvolvedor focado em construir softwares funcionais, seguros e bem modelados. Experiência na criação de plataformas municipais offline-first (<span class="text-zinc-900 dark:text-zinc-100 font-medium">GovTech</span>), controladores de cálculo crítico de prazos processuais (<span class="text-zinc-900 dark:text-zinc-100 font-medium">LegalTech</span>), gestão de clínicas (<span class="text-zinc-900 dark:text-zinc-100 font-medium">HealthTech</span>) e sistemas web com Python, React, TypeScript e PostgreSQL.
+          Desenvolvo sistemas web do banco de dados à tela, com Python, React, TypeScript e PostgreSQL. Estão em uso hoje o <span class="text-zinc-900 dark:text-zinc-100 font-medium">Salus</span>, para gestão de clínicas, e o <span class="text-zinc-900 dark:text-zinc-100 font-medium">OpticFlow</span>, para óticas. Também fiz uma ouvidoria municipal que funciona sem internet e um sistema de cálculo de prazos processuais para advocacia.
         </p>
 
         <!-- Ações Diretas -->
@@ -190,7 +190,7 @@
       <!-- Corpo do Terminal -->
       <div class="p-5 font-mono text-xs sm:text-sm text-zinc-200 space-y-3 leading-relaxed">
         <div class="text-zinc-300">
-          <span class="text-emerald-400">➜</span> <span class="text-cyan-400">~</span> Clique nos botões ou digite comandos rápidos:
+          <!-- slop-ok: prompt do zsh, não é ícone --><span class="text-emerald-400">➜</span> <span class="text-cyan-400">~</span> Clique nos botões ou digite comandos rápidos:
         </div>
 
         <!-- Atalhos rápidos clicáveis com botão Limpar destacado -->
@@ -218,7 +218,7 @@
             <span class="text-indigo-400 font-semibold">guilherme@dev:~$</span> cat info.txt
           </div>
           <div class="text-zinc-200 pl-4 border-l-2 border-indigo-500">
-            "Desenvolvedor Full Stack — Especializado em GovTech, LegalTech e sistemas web com Python, React, TypeScript e PostgreSQL."
+            "Desenvolvedor full stack. Sistemas para clínicas, óticas, prefeituras e escritórios de advocacia, com Python, React, TypeScript e PostgreSQL."
           </div>
         </div>
 
@@ -238,7 +238,7 @@
     <div class="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
       <div>
         <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Projetos Selecionados</h2>
-        <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Plataformas em operação e soluções desenvolvidas de ponta a ponta.</p>
+        <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Sistemas que desenvolvi do banco de dados à interface. Os marcados com “Ao vivo” estão em uso.</p>
       </div>
       <span id="projects-count" class="text-[11px] font-mono text-zinc-600 dark:text-zinc-400"></span>
     </div>
@@ -253,7 +253,7 @@
       <div class="min-w-0">
         <p class="cta-orcamento-kicker">Orçamento sem compromisso</p>
         <p class="cta-orcamento-titulo">Quer um sistema assim para o seu negócio?</p>
-        <p class="cta-orcamento-texto">Conte o que você precisa na ficha. Leva poucos minutos e eu respondo com uma proposta.</p>
+        <p class="cta-orcamento-texto">Descreva na ficha o que o sistema precisa fazer. Eu respondo com escopo, prazo e valor.</p>
       </div>
       <span class="cta-orcamento-botao">
         Preencher a ficha
@@ -266,7 +266,7 @@
   <section id="stack" class="py-12 px-5 max-w-4xl mx-auto border-t border-zinc-200 dark:border-zinc-800">
     <div class="mb-8">
       <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Stack Tecnológica</h2>
-      <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Tecnologias e ferramentas utilizadas com domínio prático no dia a dia.</p>
+      <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">O que usei nos projetos acima.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -312,8 +312,8 @@
           <li>• Docker & Docker Compose</li>
           <li>• Git & GitHub Workflow</li>
           <li>• Linux / Terminal</li>
-          <li>• PostgreSQL RLS & Segurança LGPD</li>
-          <li>• Testes Automatizados (PyTest)</li>
+          <li>• Row Level Security (PostgreSQL)</li>
+          <li>• Testes automatizados em Python</li>
         </ul>
       </div>
 
@@ -325,7 +325,7 @@
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-2">Contato</h2>
       <p class="text-zinc-600 dark:text-zinc-400 text-sm mb-6 font-normal">
-        Seja para consultoria, desenvolvimento de um novo projeto ou oportunidades profissionais, sinta-se à vontade para entrar em contato diretamente.
+        Para orçar um sistema, preencha a ficha. Para consultoria ou vagas, o WhatsApp é o caminho mais rápido.
       </p>
 
       <!-- Botão Direto WhatsApp em Destaque + ficha de orçamento -->
@@ -343,7 +343,7 @@
         </a>
       </div>
       <p class="text-zinc-600 dark:text-zinc-400 text-xs mb-6 -mt-3">
-        Tem um projeto em mente? A ficha leva poucos minutos e já me dá o que preciso para preparar o orçamento.
+        A ficha pergunta o que o sistema precisa fazer e para quem. Com ela eu já consigo montar a proposta.
       </p>
 
       <div class="space-y-3 font-mono text-xs">
@@ -382,7 +382,7 @@
   <!-- ================= FOOTER ================= -->
   <footer class="py-8 px-5 border-t border-zinc-200 dark:border-zinc-800 text-xs text-zinc-600 dark:text-zinc-400">
     <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p>© <span id="current-year">2026</span> Guilherme Leão. Código limpo e desenvolvimento pragmático.</p>
+      <p>© <span id="current-year">2026</span> Guilherme Leão · Goiás, Brasil</p>
       <div class="flex items-center gap-5">
         <a href="#about" class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">Início</a>
         <a href="#projects" class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">Projetos</a>
@@ -417,7 +417,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="config.js?v=3d64c2f"></script>
-  <script src="app.js?v=3d64c2f"></script>
+  <script src="config.js?v=0a73512-ns"></script>
+  <script src="app.js?v=0a73512-ns"></script>
 </body>
 </html>

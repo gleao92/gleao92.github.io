@@ -11,11 +11,11 @@ const CONFIG = {
   availableForHire: true,
   statusText: "Disponível para novos projetos",
 
-  bio: "Desenvolvedor Full Stack focado em construir softwares funcionais, seguros e bem estruturados. Experiência no desenvolvimento de plataformas municipais com arquitetura offline-first (GovTech), controladoria e motor de cálculo de prazos jurídicos (LegalTech), e sistemas SaaS para gestão empresarial.",
+  bio: "Desenvolvo sistemas web do banco de dados à tela. Estão em uso hoje o Salus, para gestão de clínicas, e o OpticFlow, para óticas. Também fiz uma ouvidoria municipal que funciona sem internet e um sistema de cálculo de prazos processuais para advocacia.",
 
   about: [
     "Trabalho principalmente com o ecossistema Python (Django, Streamlit) e JavaScript/TypeScript (React, Node.js), combinando bancos relacionais (PostgreSQL, SQLite) e soluções espaciais com PostGIS.",
-    "Priorizo código testado, banco de dados bem modelado e interfaces limpas que resolvem problemas reais de operação no dia a dia."
+    "Começo pelo banco de dados e pelas regras do negócio; a tela vem depois. Onde um erro custa caro, como no cálculo de prazos, escrevo testes antes de liberar."
   ],
 
   email: "guilhermeleao92@hotmail.com",
@@ -50,8 +50,8 @@ const CONFIG = {
       "Docker & Docker Compose",
       "Git & GitHub Workflow",
       "Linux / Bash",
-      "PostgreSQL RLS & LGPD",
-      "Testes Automatizados (PyTest)"
+      "Row Level Security (PostgreSQL)",
+      "Testes automatizados em Python"
     ]
   },
 
@@ -63,9 +63,9 @@ const CONFIG = {
       year: "2026",
       title: "Tempestivo — Controladoria de Prazos & Jurimetria",
       category: "LegalTech",
-      summary: "Sistema de cálculo crítico de prazos processuais para advocacia (cível, criminal e rural), com captura de publicações do DJEN e DataJud.",
-      challenge: "Controle manual de prazos processuais possui alto índice de risco de preclusão por depender de feriados forenses locais, recessos e regras regimentais específicas de cada tribunal.",
-      solution: "Motor algorítmico em Python com 31 testes unitários automatizados cobrindo feriados móveis e regras do TJGO. Fluxo de revisão humana obrigatória com auditoria imutável (Resolução CNJ 615/2025) e margem preventiva de 3 dias úteis.",
+      summary: "Calcula prazos processuais para escritórios de advocacia (cível, criminal e rural) e captura as publicações do DJEN e do DataJud.",
+      challenge: "Contar prazo à mão exige conferir feriados locais, recesso forense e regras de cada tribunal. Um dia contado errado pode fazer o escritório perder o prazo.",
+      solution: "Cálculo em Python com uma bateria de testes que cobre feriados móveis, recesso forense e regras do TJGO. Todo prazo passa por revisão humana antes de valer, cada alteração fica registrada e o sistema avisa com 3 dias úteis de folga.",
       stack: ["Python", "Streamlit", "SQLite / PostgreSQL", "DataJud API", "DJEN", "Docker"],
       githubUrl: "https://github.com/gleao92/jurimetria",
       demoUrl: null,
@@ -77,8 +77,8 @@ const CONFIG = {
       title: "Salus — Gestão de Clínicas",
       category: "HealthTech",
       summary: "Plataforma de gestão para clínicas: agenda, prontuário eletrônico com assinatura eletrônica, teleatendimento por vídeo, lembretes por WhatsApp e exportação no padrão FHIR.",
-      challenge: "Clínicas pequenas operam com agenda em papel ou planilha e prontuários dispersos, sem trilha de auditoria nem controle de acesso adequado a dados sensíveis de saúde.",
-      solution: "Aplicação multi-clínica em Python/Streamlit sobre Supabase (PostgreSQL) com Row Level Security por clínica e perfil, autenticação com MFA (TOTP), trilha de auditoria, numeração de prontuário com dígito verificador, validação do Cartão Nacional de Saúde e exportação FHIR para interoperabilidade.",
+      challenge: "Muitas clínicas pequenas ainda usam agenda de papel ou planilha e guardam prontuários em lugares diferentes, sem registro de quem acessou cada um.",
+      solution: "Python/Streamlit sobre Supabase (PostgreSQL). Cada clínica e cada perfil só enxergam os próprios dados (Row Level Security), o login tem segundo fator (TOTP) e cada acesso ao prontuário fica registrado. O prontuário tem número com dígito verificador, o Cartão Nacional de Saúde é validado e os dados podem ser exportados no padrão FHIR.",
       stack: ["Python", "Streamlit", "Supabase", "PostgreSQL / RLS", "MFA (TOTP)", "HL7 FHIR", "WhatsApp"],
       githubUrl: "https://github.com/gleao92/app-gestao-clinica",
       demoUrl: "https://salus.opusnoa.com.br",
@@ -89,9 +89,9 @@ const CONFIG = {
       year: "2026",
       title: "OpticFlow — ERP SaaS para Óticas",
       category: "SaaS",
-      summary: "Plataforma integrada de gestão para óticas: receitas oftalmológicas, catálogo de lentes/armações, fluxo Kanban de montagem, estoque e financeiro.",
-      challenge: "Sistemas genéricos de comércio não atendem a complexidade de dioptrias (grau esférico, cilíndrico, eixo, DNP) nem o acompanhamento de ordens de serviço em laboratórios ópticos.",
-      solution: "Backend em Django REST Framework com PostgreSQL conteinerizado em Docker, e frontend responsivo em React + TypeScript com quadro Kanban em tempo real para as etapas de montagem e entrega.",
+      summary: "Gestão para óticas: receitas oftalmológicas, catálogo de lentes e armações, quadro de montagem, estoque e financeiro.",
+      challenge: "Sistemas de loja comuns não têm campo para grau esférico, cilíndrico, eixo e DNP, nem acompanham o óculos enquanto ele está no laboratório.",
+      solution: "Backend em Django REST Framework com PostgreSQL em Docker e frontend em React + TypeScript. Cada ordem de serviço anda por um quadro com as etapas de montagem e entrega.",
       stack: ["Python", "Django REST", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Docker"],
       githubUrl: "https://github.com/gleao92/optic-flow",
       demoUrl: "https://opticflow-app.onrender.com",
@@ -103,8 +103,8 @@ const CONFIG = {
       title: "Aplicativo de Gestão Pública para Municípios",
       category: "GovTech",
       summary: "Ouvidoria digital municipal e plataforma de gestão de ordens de serviço (PWA + painel administrativo) em conformidade com a Lei Federal 13.460/2017.",
-      challenge: "Permitir que a população registre ocorrências urbanas mesmo sem sinal de internet, e que as secretarias municipais agrupem demandas vizinhas em rotas inteligentes para as equipes de manutenção.",
-      solution: "PWA 100% offline-first com fila no IndexedDB e sincronização automática. No backend, PostgreSQL com PostGIS no Supabase para geoprocessamento de duplicidades e Row Level Security (RLS) para isolamento estrito de dados conforme a LGPD.",
+      challenge: "O morador precisa conseguir registrar um buraco ou uma lâmpada queimada mesmo sem sinal de internet, e a secretaria precisa juntar pedidos repetidos do mesmo lugar antes de mandar a equipe.",
+      solution: "PWA offline-first: a ocorrência fica guardada no aparelho (IndexedDB) e é enviada quando a internet volta. No Supabase, o PostGIS encontra pedidos próximos que tratam do mesmo problema e o Row Level Security faz cada secretaria ver só os próprios dados.",
       stack: ["JavaScript", "PWA / IndexedDB", "Supabase", "PostgreSQL", "PostGIS", "Deno", "Tailwind CSS"],
       githubUrl: "https://github.com/gleao92/jussara",
       demoUrl: null,
@@ -115,9 +115,9 @@ const CONFIG = {
       year: "2026",
       title: "MoodSync — Music Player por Humor",
       category: "Web & APIs",
-      summary: "Aplicação web que se conecta à conta do Spotify via OAuth 2.0 e comanda o player do usuário em tempo real de acordo com o humor selecionado.",
-      challenge: "Integrar o fluxo seguro de autorização OAuth 2.0 com escopos de controle de playback e controlar dispositivos remotos via API com baixa latência.",
-      solution: "Servidor em Node.js e Express gerenciando autenticação com a Spotify Web API e acionando playlists curadas diretamente no player ativo do usuário.",
+      summary: "A pessoa escolhe um humor e o app toca uma playlist correspondente no Spotify dela, pelo OAuth 2.0.",
+      challenge: "Pedir só as permissões de controle do player no OAuth 2.0 e mandar o comando para o aparelho que já está tocando.",
+      solution: "Servidor em Node.js e Express que faz a autenticação na Spotify Web API e inicia a playlist escolhida no player ativo do usuário.",
       stack: ["Node.js", "Express", "Spotify Web API", "OAuth 2.0", "Axios", "JavaScript"],
       githubUrl: "https://github.com/gleao92/moodsync",
       demoUrl: null,

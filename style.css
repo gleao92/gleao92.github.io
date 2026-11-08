@@ -71,7 +71,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px); /* slop-ok: menu fixo legível sobre o conteúdo */
 }
 
 [data-theme="dark"] .navbar-clean {
@@ -278,7 +278,7 @@ body {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px); /* slop-ok: fundo do modal de detalhes */
   z-index: 999;
   display: flex;
   align-items: center;
@@ -403,7 +403,7 @@ body {
   padding: 1.5rem 1.75rem;
   border-radius: 1rem;
   border: 1px solid #c7d2fe;
-  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 70%);
+  background: #eef2ff;
   transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
 }
 .cta-orcamento:hover { border-color: #818cf8; transform: translateY(-2px); box-shadow: 0 10px 24px -12px rgb(79 70 229 / 0.45); }
@@ -419,7 +419,7 @@ body {
 
 html.dark .cta-orcamento, [data-theme="dark"] .cta-orcamento {
   border-color: rgb(99 102 241 / 0.45);
-  background: linear-gradient(135deg, rgb(79 70 229 / 0.18) 0%, rgb(24 24 27 / 0.6) 75%);
+  background: rgb(79 70 229 / 0.12);
 }
 html.dark .cta-orcamento-kicker, [data-theme="dark"] .cta-orcamento-kicker { color: #a5b4fc; }
 html.dark .cta-orcamento-titulo, [data-theme="dark"] .cta-orcamento-titulo { color: #f4f4f5; }

@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="grid grid-cols-2 gap-1 text-zinc-300 mt-1">
           <div><span class="text-indigo-400 font-bold">sobre</span> : Resumo e foco</div>
           <div><span class="text-emerald-400 font-bold">projetos</span> : Lista os sistemas reais</div>
-          <div><span class="text-amber-400 font-bold">skills</span> : Tecnologias dominadas</div>
+          <div><span class="text-amber-400 font-bold">skills</span> : Tecnologias que uso</div>
           <div><span class="text-purple-400 font-bold">contato</span> : E-mail e redes</div>
           <div><span class="text-zinc-400 font-bold">limpar</span> / <span class="text-zinc-400 font-bold">clear</span> : Limpa o terminal</div>
         </div>
@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="text-zinc-200 font-semibold mb-1">Projetos Desenvolvidos:</div>
         <div class="space-y-1 text-xs">
           ${(config.projects || []).map(p => `
+            <!-- slop-ok: seta de link externo no texto do terminal -->
             <div><span class="text-emerald-400 font-bold">${p.title}</span> <span class="text-zinc-500 font-mono">[${p.category}]</span>${p.demoUrl ? ` <a href="${p.demoUrl}" target="_blank" rel="noopener noreferrer" data-produto="${p.id}" class="text-indigo-400 underline">abrir ↗</a>` : ''}</div>
           `).join('')}
         </div>
@@ -117,11 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
       `,
       contato: () => `
         <div class="text-zinc-200 space-y-1">
-          <div>💬 WhatsApp: <a href="${config.socialLinks?.whatsapp || 'https://wa.me/5562982488018'}" target="_blank" class="text-emerald-400 underline font-semibold">(62) 98248-8018</a></div>
-          <div>📧 E-mail: <a href="mailto:${config.email}" class="text-indigo-400 underline font-semibold">${config.email}</a></div>
-          <div>🐙 GitHub: <a href="https://github.com/${config.githubUsername}" target="_blank" class="text-indigo-400 underline font-semibold">github.com/${config.githubUsername}</a></div>
-          <div>💼 LinkedIn: <a href="${config.socialLinks?.linkedin || '#'}" target="_blank" class="text-indigo-400 underline font-semibold">Ver Perfil</a></div>
-          <div>📋 Orçamento: <a href="https://fichacliente.opusnoa.com.br/" target="_blank" rel="noopener noreferrer" class="text-indigo-400 underline font-semibold">preencher a ficha</a></div>
+          <div><span class="text-zinc-500">whatsapp:</span> <a href="${config.socialLinks?.whatsapp || 'https://wa.me/5562982488018'}" target="_blank" class="text-emerald-400 underline font-semibold">(62) 98248-8018</a></div>
+          <div><span class="text-zinc-500">e-mail:</span> <a href="mailto:${config.email}" class="text-indigo-400 underline font-semibold">${config.email}</a></div>
+          <div><span class="text-zinc-500">github:</span> <a href="https://github.com/${config.githubUsername}" target="_blank" class="text-indigo-400 underline font-semibold">github.com/${config.githubUsername}</a></div>
+          <div><span class="text-zinc-500">linkedin:</span> <a href="${config.socialLinks?.linkedin || '#'}" target="_blank" class="text-indigo-400 underline font-semibold">Ver Perfil</a></div>
+          <div><span class="text-zinc-500">orçamento:</span> <a href="https://fichacliente.opusnoa.com.br/" target="_blank" rel="noopener noreferrer" class="text-indigo-400 underline font-semibold">preencher a ficha</a></div>
         </div>
       `,
       clear: () => {
@@ -361,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50">
           <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100 mb-1.5 flex items-center gap-1.5">
             <i data-lucide="alert-circle" class="w-3.5 h-3.5 text-amber-500"></i>
-            O Desafio de Negócio
+            O problema
           </h3>
           <p class="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
             ${escapeHtml(project.challenge)}
@@ -372,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50">
           <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100 mb-1.5 flex items-center gap-1.5">
             <i data-lucide="cpu" class="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400"></i>
-            A Solução de Engenharia
+            Como foi resolvido
           </h3>
           <p class="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
             ${escapeHtml(project.solution)}
