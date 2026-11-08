@@ -72,16 +72,16 @@ const CONFIG = {
       isPrivate: true
     },
     {
-      id: "clinicflow",
+      id: "salus",
       year: "2026",
-      title: "ClinicFlow — Gestão de Clínicas",
+      title: "Salus — Gestão de Clínicas",
       category: "HealthTech",
-      summary: "Plataforma de gestão para clínicas: agenda, prontuário eletrônico com assinatura eletrônica, lembretes por WhatsApp e exportação no padrão FHIR.",
+      summary: "Plataforma de gestão para clínicas: agenda, prontuário eletrônico com assinatura eletrônica, teleatendimento por vídeo, lembretes por WhatsApp e exportação no padrão FHIR.",
       challenge: "Clínicas pequenas operam com agenda em papel ou planilha e prontuários dispersos, sem trilha de auditoria nem controle de acesso adequado a dados sensíveis de saúde.",
       solution: "Aplicação multi-clínica em Python/Streamlit sobre Supabase (PostgreSQL) com Row Level Security por clínica e perfil, autenticação com MFA (TOTP), trilha de auditoria, numeração de prontuário com dígito verificador, validação do Cartão Nacional de Saúde e exportação FHIR para interoperabilidade.",
       stack: ["Python", "Streamlit", "Supabase", "PostgreSQL / RLS", "MFA (TOTP)", "HL7 FHIR", "WhatsApp"],
       githubUrl: "https://github.com/gleao92/app-gestao-clinica",
-      demoUrl: "https://clinicflow.opusnoa.com.br",
+      demoUrl: "https://salus.opusnoa.com.br",
       isPrivate: true
     },
     {
