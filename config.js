@@ -122,19 +122,6 @@ const CONFIG = {
       githubUrl: "https://github.com/gleao92/moodsync",
       demoUrl: null,
       isPrivate: false
-    },
-    {
-      id: "frotas",
-      year: "2026",
-      title: "Gestão de Frotas & Logística",
-      category: "Logística",
-      summary: "Sistema para controle de veículos corporativos, manutenção preventiva por quilometragem e monitoramento de consumo de combustível.",
-      challenge: "Evitar quebras mecânicas inesperadas e obter métricas financeiras precisas de custo por quilômetro rodado.",
-      solution: "Modelagem relacional para registro de abastecimentos, motoristas e histórico de manutenções com alertas de revisões periódicas.",
-      stack: ["JavaScript", "Node.js", "REST APIs", "PostgreSQL"],
-      githubUrl: "https://github.com/gleao92/frotas",
-      demoUrl: null,
-      isPrivate: false
     }
   ]
 };
