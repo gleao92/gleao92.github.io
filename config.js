@@ -22,7 +22,7 @@ const CONFIG = {
   phone: "+55 62 98248-8018",
   socialLinks: {
     github: "https://github.com/gleao92",
-    linkedin: "https://www.linkedin.com/in/guilherme-leao",
+    linkedin: "https://www.linkedin.com/in/guilhermealves-tisaude/",
     whatsapp: "https://wa.me/5562982488018",
     email: "mailto:guilhermeleao92@hotmail.com"
   },
