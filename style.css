@@ -383,3 +383,49 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--border-hover);
 }
+
+/* Ficha de orçamento: botão e faixa de chamada em destaque */
+.btn-orcamento {
+  border-radius: 0.5rem;
+  background: #4f46e5;
+  color: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+  transition: background-color .15s ease, transform .15s ease;
+}
+.btn-orcamento:hover { background: #4338ca; transform: translateY(-1px); }
+
+.cta-orcamento {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 1rem;
+  border: 1px solid #c7d2fe;
+  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 70%);
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.cta-orcamento:hover { border-color: #818cf8; transform: translateY(-2px); box-shadow: 0 10px 24px -12px rgb(79 70 229 / 0.45); }
+.cta-orcamento-kicker { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #4f46e5; }
+.cta-orcamento-titulo { margin-top: .25rem; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; color: #18181b; text-wrap: balance; }
+.cta-orcamento-texto { margin-top: .25rem; font-size: .8rem; color: #52525b; max-width: 34rem; }
+.cta-orcamento-botao {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .7rem 1.1rem; border-radius: .6rem;
+  background: #4f46e5; color: #fff; font-size: .8rem; font-weight: 600; white-space: nowrap;
+}
+.cta-orcamento:hover .cta-orcamento-botao { background: #4338ca; }
+
+html.dark .cta-orcamento, [data-theme="dark"] .cta-orcamento {
+  border-color: rgb(99 102 241 / 0.45);
+  background: linear-gradient(135deg, rgb(79 70 229 / 0.18) 0%, rgb(24 24 27 / 0.6) 75%);
+}
+html.dark .cta-orcamento-kicker, [data-theme="dark"] .cta-orcamento-kicker { color: #a5b4fc; }
+html.dark .cta-orcamento-titulo, [data-theme="dark"] .cta-orcamento-titulo { color: #f4f4f5; }
+html.dark .cta-orcamento-texto, [data-theme="dark"] .cta-orcamento-texto { color: #a1a1aa; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-orcamento, .cta-orcamento { transition: none; }
+  .btn-orcamento:hover, .cta-orcamento:hover { transform: none; }
+}

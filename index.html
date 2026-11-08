@@ -58,7 +58,7 @@
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 
   <!-- CSS Limpo & Editorial -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3d64c2f">
 </head>
 <body class="min-h-screen antialiased selection:bg-indigo-500 selection:text-white">
 
@@ -136,7 +136,7 @@
           </a>
 
           <a href="https://fichacliente.opusnoa.com.br/" target="_blank" rel="noopener noreferrer"
-             class="px-3.5 py-2 text-xs font-medium btn-outline inline-flex items-center gap-1.5">
+             class="btn-orcamento px-4 py-2 text-xs font-semibold inline-flex items-center gap-1.5">
             <i data-lucide="clipboard-list" class="w-3.5 h-3.5"></i>
             Solicitar orçamento
           </a>
@@ -247,6 +247,19 @@
     <div id="projects-list" class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <!-- Injetado via app.js -->
     </div>
+
+    <!-- Chamada para a ficha de orçamento -->
+    <a href="https://fichacliente.opusnoa.com.br/" target="_blank" rel="noopener noreferrer" class="cta-orcamento mt-8 group">
+      <div class="min-w-0">
+        <p class="cta-orcamento-kicker">Orçamento sem compromisso</p>
+        <p class="cta-orcamento-titulo">Quer um sistema assim para o seu negócio?</p>
+        <p class="cta-orcamento-texto">Conte o que você precisa na ficha. Leva poucos minutos e eu respondo com uma proposta.</p>
+      </div>
+      <span class="cta-orcamento-botao">
+        Preencher a ficha
+        <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5"></i>
+      </span>
+    </a>
   </section>
 
   <!-- ================= STACK TECNOLÓGICA ================= -->
@@ -324,7 +337,7 @@
           <span class="font-mono opacity-90 text-[11px] font-normal">(62) 98248-8018</span>
         </a>
         <a href="https://fichacliente.opusnoa.com.br/" target="_blank" rel="noopener noreferrer"
-           class="px-4 py-2.5 text-xs font-semibold btn-outline inline-flex items-center gap-2">
+           class="btn-orcamento px-4 py-2.5 text-xs font-semibold inline-flex items-center gap-2">
           <i data-lucide="clipboard-list" class="w-4 h-4"></i>
           <span>Preencher ficha de orçamento</span>
         </a>
@@ -404,7 +417,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="config.js?v=db42443-orc"></script>
-  <script src="app.js?v=db42443-orc"></script>
+  <script src="config.js?v=3d64c2f"></script>
+  <script src="app.js?v=3d64c2f"></script>
 </body>
 </html>
